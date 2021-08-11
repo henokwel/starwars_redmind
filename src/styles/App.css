@@ -1,0 +1,157 @@
+.App {
+  display: grid;
+  grid-template-columns: 2fr, 2fr;
+  grid-template-rows: 1fr 3fr;
+  grid-template-areas:
+    "header ."
+    "main .";
+  height: 100vh;
+  padding-left: 15px;
+}
+header {
+  grid-area: header;
+  /* background-color: grey; */
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(1.2em, 3vw, 2.4em);
+  line-height: 150%;
+  /* identical to box height, or 82px */
+  letter-spacing: 0.02em;
+  width: fit-content;
+  height: 20vh;
+}
+
+main {
+  grid-area: main;
+  height: 80vh;
+}
+
+/* Search Box */
+.search_box_container {
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  padding-right: 20%;
+  margin-bottom: 30px;
+}
+
+
+/* Back from search Icon*/
+/*  Noramly Hidden waiting to be used */
+
+.finish_search_container{
+  background-color: white;
+}
+.finish_search_container button{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px 11px 5px 11px;
+
+}
+
+.finish_search_container img{
+  transform: rotate(0deg);
+}
+
+.back-arrow-close{
+  display: none;
+}
+.back-arrow-open{
+  display: block;
+}
+
+
+
+
+/*  Search Input section */
+
+
+.search_box {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 50px;
+  max-width: 55%;
+  border: 1px solid white;
+  background: transparent;
+}
+
+.search_box input {
+  background: transparent;
+  color: white;
+  border: none;
+  width: 70%;
+  height: 42px;
+  font-size: 25px;
+}
+
+.search_box button {
+  background: transparent;
+  border: none;
+}
+
+/* Search box Submit Icons */
+.search_enter {
+  background-color: white;
+  padding: 8px 10px 8px 10px;
+  font-size: 15px;
+}
+
+.search_enter p {
+  margin: 0px;
+}
+
+
+
+/* __Search box End__ */
+
+/*  */
+
+/* .card_list_container{
+  overflow: scroll;
+  height: 65vh;
+} */
+
+/* Pagination  */
+
+.pagination_container button {
+  background-color: var(--main-bg-color);
+  width: 65px;
+  height: 37;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.pagination_container button:hover {
+  background-color: #242222;
+}
+
+.pagination-btn-left {
+  margin-right: 14px;
+}
+.pagination-btn-left img {
+  transform: rotate(180deg);
+  /* background-color: red; */
+}
+
+
+
+
+
+
+@media only screen and  (max-width:750px) {
+
+  /*  when Screen with is 750px expand our template area */
+  .App{
+    background-color: teal;
+    grid-template-areas:
+    "header header"
+    "main main";
+    padding-right: 15px;
+  }
+  
+}
+
+
