@@ -174,10 +174,8 @@ function App() {
           </div>
 
           <div className="search_box">
+            
             <lable for="charactarSearch">
-              Search
-            </lable>
-
             <input
               type="search"
               aria-label="Search for Charactars"
@@ -187,6 +185,7 @@ function App() {
               onFocus={(e) => { setInputFoucs(true) }}
             // onBlur={(e) => { setInputFoucs(false) }}
             />
+              </lable>
 
             <button
               aria-label="Search"
@@ -254,29 +253,24 @@ function App() {
               // {/* Pagination here */}
               <div className="pagination_container">
                 <button className="pagination-btn-left"
-                  aria-label="Sea"
-
+                  aria-label="back to previous page"
                   onClick={() => handlePagination("prev", page)}
                   style={{ display: page.prev === null ? "none" : "inline-block" }}
                 >
                   {/* Icon */}
-
                   <img
-                    // className={`arrow ${isOpen ? "open" : "close"}`}
                     src={IArrow}
                     alt="Previous page Icon"
                   />
                 </button>
 
                 <button className="pagination-btn"
+                  aria-label="Next page"
                   onClick={() => handlePagination("next", page)}
-
                   style={{ display: page.next === null ? "none" : "inline-block" }}
                 >
                   {/* Icon */}
-
                   <img
-                    // className={`arrow ${isOpen ? "open" : "close"}`}
                     src={IArrow}
                     alt="Next page Icon"
                   />
