@@ -172,7 +172,7 @@ function App() {
 
           <div className="search_box">
 
-            <lable for="charactarSearch">
+            <lable htmlFor="charactarSearch">
               <input
                 type="search"
                 aria-label="Search for Charactars"
