@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import arrow from '../Assets/downIconWhite.svg'
 import '../styles/Card.css'
 
-export default function Card({ item }) {
+export default function Card({ item, index }) {
 
     const { name, birth_year, gender } = item
     const [isOpen, setIsOpen] = useState(false);
@@ -10,8 +10,12 @@ export default function Card({ item }) {
     return (
         <div className="card_item" >
             <button className="card_title_container"
-                onClick={() => setIsOpen(!isOpen)}>
-
+                onClick={() => setIsOpen(!isOpen)}
+                aria-expanded={isOpen}
+                aria-controls={`sec${+index + 1}`}
+                id={`card${+index + 1}p`}
+                data-allow-toggle
+            >
 
                 <div className="card_title">
                     <p>{name}</p>
@@ -26,10 +30,15 @@ export default function Card({ item }) {
                 </div>
             </button>
 
-            {isOpen && <div className="card_content">
-                <p>Name: {name}</p>
-                <p>Year born : {birth_year}</p>
-                <p>Gender: {gender === "n/a" ? "Unknown" : gender}</p>
+            {isOpen && <div className="card_content"
+                id={`sec${+index + 1}`}
+                aria-labelledby={`card${+index + 1}p`}
+                role="region"
+
+            >
+                <p tabindex="0" >Name: {name}</p>
+                <p tabindex="0">Year born : {birth_year}</p>
+                <p tabindex="0" >Gender: {gender === "n/a" ? "Unknown" : gender}</p>
 
             </div>}
         </div>

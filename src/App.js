@@ -92,8 +92,8 @@ function App() {
     const req = await fetch(`https://swapi.dev/api/people/?search=${character.trim()}`)
     const res = await req.json()
 
+    setCharactar(null)
     setBackFromSearch(true)
-    // setPage({ prev: res.previous, next: res.next })
     setStarWarsData(res.results)
   }
 
@@ -106,6 +106,7 @@ function App() {
       console.log("prevPage", prevPage);
       const req = await fetch(`https://swapi.dev/api/people/?page=${+prevPage + 1}`)
       const res = await req.json()
+
       setStarWarsData(res.results)
       setBackFromSearch(false)
 
@@ -113,6 +114,7 @@ function App() {
 
       const req = await fetch("https://swapi.dev/api/people")
       const res = await req.json()
+
       setPage({ prev: res.previous, next: res.next })
       setStarWarsData(res.results)
       setBackFromSearch(false)
@@ -124,19 +126,24 @@ function App() {
     if (type === "next") {
       const req = await fetch(next)
       const res = await req.json()
-      // console.log(res);
+
       setPage({ prev: res.previous, next: res.next })
       setStarWarsData(res.results)
       return
+
+
     } else {
       if (!prev) return
       const req = await fetch(prev)
       const res = await req.json()
-      console.log(res);
+
       setPage({ prev: res.previous, next: res.next })
       setStarWarsData(res.results)
+      return
     }
   }
+
+  console.log(starWarsData);
 
   return (
     <div className="App">
@@ -152,6 +159,8 @@ function App() {
           {/* Go back from Search */}
           <div className="finish_search_container">
             <button
+
+              aria-label="Return to home page"
               className={`back-arrow-${backFromSearch ? "open" : "close"}`}
               onClick={() => handleBackFromSearch()}
             >
@@ -165,13 +174,22 @@ function App() {
           </div>
 
           <div className="search_box">
+            <lable for="charactarSearch">
+              Search
+            </lable>
+
             <input
+              type="search"
+              aria-label="Search for Charactars"
+              name="charactarSearch"
+              id="charactarSearch"
               onChange={(e) => { setCharactar(e.target.value) }}
               onFocus={(e) => { setInputFoucs(true) }}
             // onBlur={(e) => { setInputFoucs(false) }}
             />
-            
+
             <button
+              aria-label="Search"
               onClick={() => handleSearch()}
             >
               {/* OnFocus Disable Search Icon and repace with Enter */}
@@ -179,7 +197,6 @@ function App() {
               {
                 !inputFoucs ?
                   <img
-                    // className={`arrow ${isOpen ? "open" : "close"}`}
                     src={ISearch}
                     alt="Search Button Icon"
                   />
@@ -188,7 +205,6 @@ function App() {
                     <p>Enter</p>
                   </div>
               }
-
 
             </button>
           </div>
@@ -207,7 +223,7 @@ function App() {
               </div>
               :
 
-              starWarsData.map((item, index) => <Card key={index} item={item} />)
+              starWarsData.map((item, index) => <Card key={index} item={item} index={index} />)
           }
 
 
@@ -238,6 +254,8 @@ function App() {
               // {/* Pagination here */}
               <div className="pagination_container">
                 <button className="pagination-btn-left"
+                  aria-label="Sea"
+
                   onClick={() => handlePagination("prev", page)}
                   style={{ display: page.prev === null ? "none" : "inline-block" }}
                 >
@@ -246,7 +264,7 @@ function App() {
                   <img
                     // className={`arrow ${isOpen ? "open" : "close"}`}
                     src={IArrow}
-                    alt="Previous page"
+                    alt="Previous page Icon"
                   />
                 </button>
 
@@ -260,7 +278,7 @@ function App() {
                   <img
                     // className={`arrow ${isOpen ? "open" : "close"}`}
                     src={IArrow}
-                    alt="Next page"
+                    alt="Next page Icon"
                   />
                 </button>
 

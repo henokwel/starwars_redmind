@@ -179,7 +179,7 @@ main {
 
   /*  when Screen with is 750px expand our template area */
   .App{
-    background-color: teal;
+    /* background-color: teal; */
     grid-template-areas:
     "header header"
     "main main";
