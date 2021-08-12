@@ -22,14 +22,7 @@
   color: white;
 }
 
-.card_title_container {
-  display: flex;
-  justify-content: space-between;
-}
 
-.card_title_container:hover {
-  background-color: #242222;
-}
 
 .card_title {
   display: flex;

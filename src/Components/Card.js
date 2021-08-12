@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import arrow from '../Assets/downIconWhite.svg'
 import '../styles/Card.css'
 
-export default function Card({ title, content }) {
+export default function Card({ item }) {
+
+    const { name, birth_year, gender } = item
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -12,12 +14,12 @@ export default function Card({ title, content }) {
 
 
                 <div className="card_title">
-                    <p>{title}</p>
+                    <p>{name}</p>
                 </div>
 
                 <div className="card_title_icon">
                     <img
-                        className={`arrow-${isOpen ?"open" :"close"}`}
+                        className={`arrow-${isOpen ? "open" : "close"}`}
                         src={arrow}
                         alt={`Card ${isOpen ? "open" : "close"}`}
                     />
@@ -25,9 +27,10 @@ export default function Card({ title, content }) {
             </button>
 
             {isOpen && <div className="card_content">
-                <p>First name: {content}</p>
-                <p>First name: {content}</p>
-                <p>First name: {content}</p>
+                <p>Name: {name}</p>
+                <p>Year born : {birth_year}</p>
+                <p>Gender: {gender === "n/a" ? "Unknown" : gender}</p>
+
             </div>}
         </div>
     );
