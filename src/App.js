@@ -103,7 +103,6 @@ function App() {
     // fetch previous page
     if (prev !== null) {
       const prevPage = prev.charAt(page.prev.length - 1)
-      console.log("prevPage", prevPage);
       const req = await fetch(`https://swapi.dev/api/people/?page=${+prevPage + 1}`)
       const res = await req.json()
 
@@ -143,8 +142,6 @@ function App() {
     }
   }
 
-  console.log(starWarsData);
-
   return (
     <div className="App">
       <header>
@@ -174,18 +171,18 @@ function App() {
           </div>
 
           <div className="search_box">
-            
+
             <lable for="charactarSearch">
-            <input
-              type="search"
-              aria-label="Search for Charactars"
-              name="charactarSearch"
-              id="charactarSearch"
-              onChange={(e) => { setCharactar(e.target.value) }}
-              onFocus={(e) => { setInputFoucs(true) }}
-            // onBlur={(e) => { setInputFoucs(false) }}
-            />
-              </lable>
+              <input
+                type="search"
+                aria-label="Search for Charactars"
+                name="charactarSearch"
+                id="charactarSearch"
+                onChange={(e) => { setCharactar(e.target.value) }}
+                onFocus={(e) => { setInputFoucs(true) }}
+              // onBlur={(e) => { setInputFoucs(false) }}
+              />
+            </lable>
 
             <button
               aria-label="Search"
