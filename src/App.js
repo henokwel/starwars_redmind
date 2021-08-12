@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ClipLoader from "react-spinners/ScaleLoader";
 import Card from './Components/Card';
 import './styles/App.css';
@@ -6,54 +6,6 @@ import IArrow from './Assets/arrowIconWhite.svg'
 import ISearch from './Assets/SearchIconWhite.svg'
 import IArrowback from './Assets/arrowIconBlack.svg'
 
-const fakeData = [
-  {
-    id: 1,
-    name: "Henok",
-    content: "Hksdfjdhf"
-  },
-  {
-    id: 2,
-    name: "Luffy",
-    content: "Hksdfjdhf"
-  },
-  {
-    id: 3,
-    name: "zoro",
-    content: "Hksdfjdhf"
-  },
-  // {
-  //   id: 1,
-  //   name: "Henok",
-  //   content: "Hksdfjdhf"
-  // },
-  // {
-  //   id: 2,
-  //   name: "Luffy",
-  //   content: "Hksdfjdhf"
-  // },
-  // {
-  //   id: 3,
-  //   name: "zoro",
-  //   content: "Hksdfjdhf"
-  // },
-  // {
-  //   id: 1,
-  //   name: "Henok",
-  //   content: "Hksdfjdhf"
-  // },
-  // {
-  //   id: 2,
-  //   name: "Luffy",
-  //   content: "Hksdfjdhf"
-  // },
-  // {
-  //   id: 3,
-  //   name: "zoro",
-  //   content: "Hksdfjdhf"
-  // }
-
-]
 
 
 function App() {
@@ -83,8 +35,6 @@ function App() {
     })()
   }, [])
 
-
-  // console.log(starWarsData);
 
   const handleSearch = async () => {
     if (!character) return
@@ -129,7 +79,6 @@ function App() {
       setPage({ prev: res.previous, next: res.next })
       setStarWarsData(res.results)
       return
-
 
     } else {
       if (!prev) return
@@ -227,8 +176,8 @@ function App() {
           {
             starWarsData !== null && starWarsData.length === 0 ?
               <div className="card_list_error">
-                <h1>The Force has abandoned you.</h1>
-                <h1>Try again</h1>
+                <h1 tabindex="0">The Force has abandoned you.</h1>
+                <h1  tabindex="0">Try again</h1>
               </div>
               :
               ""
