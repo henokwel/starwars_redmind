@@ -22,8 +22,8 @@ header {
 
 main {
   grid-area: main;
-  height: 80vh;
-}
+  height: auto;
+ }
 
 /* Search Box */
 .search_box_container {

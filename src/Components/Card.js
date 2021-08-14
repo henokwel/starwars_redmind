@@ -1,14 +1,20 @@
 import React, { useState } from 'react'
-import arrow from '../Assets/downIconWhite.svg'
+ import arrow from '../Assets/downIconWhite.svg'
 import '../styles/Card.css'
 
 export default function Card({ item, index }) {
 
+
     const { name, birth_year, gender } = item
     const [isOpen, setIsOpen] = useState(false);
 
+
+
+
+
     return (
-        <div className="card_item" >
+        <div
+            className="card_item" >
             <button className="card_title_container"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-expanded={isOpen}
@@ -33,14 +39,16 @@ export default function Card({ item, index }) {
             {isOpen && <div className="card_content"
                 id={`sec${+index + 1}`}
                 aria-labelledby={`card${+index + 1}p`}
-                role="region"
+                role="region">
 
-            >
-                <p tabindex="0" >Name: {name}</p>
-                <p tabindex="0">Year born : {birth_year}</p>
-                <p tabindex="0" >Gender: {gender === "n/a" ? "Unknown" : gender}</p>
+                <p tabIndex="0" >Name: {name}</p>
+                <p tabIndex="0">Year born : {birth_year}</p>
+                <p tabIndex="0" >Gender: {gender === "n/a" ? "Unknown" : gender}</p>
 
             </div>}
         </div>
+
+
+
     );
 }

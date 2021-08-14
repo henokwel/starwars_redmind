@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import ClipLoader from "react-spinners/ScaleLoader";
+ import ClipLoader from "react-spinners/ScaleLoader";
 import Card from './Components/Card';
 import './styles/App.css';
 import IArrow from './Assets/arrowIconWhite.svg'
 import ISearch from './Assets/SearchIconWhite.svg'
 import IArrowback from './Assets/arrowIconBlack.svg'
+
 
 
 
@@ -15,7 +16,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   // Search Input state
-  const [character, setCharactar] = useState(null)
+  const [character, setCharacter] = useState(null)
 
   // 
   const [starWarsData, setStarWarsData] = useState(null)
@@ -35,6 +36,7 @@ function App() {
     })()
   }, [])
 
+  
 
   const handleSearch = async () => {
     if (!character) return
@@ -42,7 +44,7 @@ function App() {
     const req = await fetch(`https://swapi.dev/api/people/?search=${character.trim()}`)
     const res = await req.json()
 
-    setCharactar(null)
+    // setCharacter(null)
     setBackFromSearch(true)
     setStarWarsData(res.results)
   }
@@ -58,6 +60,7 @@ function App() {
 
       setStarWarsData(res.results)
       setBackFromSearch(false)
+      setCharacter(null)
 
     } else {
 
@@ -67,6 +70,7 @@ function App() {
       setPage({ prev: res.previous, next: res.next })
       setStarWarsData(res.results)
       setBackFromSearch(false)
+      setCharacter(null)  
     }
   }
 
@@ -105,7 +109,6 @@ function App() {
           {/* Go back from Search */}
           <div className="finish_search_container">
             <button
-
               aria-label="Return to home page"
               className={`back-arrow-${backFromSearch ? "open" : "close"}`}
               onClick={() => handleBackFromSearch()}
@@ -121,13 +124,14 @@ function App() {
 
           <div className="search_box">
 
-            <lable htmlFor="charactarSearch">
+            <lable htmlFor="characterSearch">
               <input
-                type="search"
-                aria-label="Search for Charactars"
-                name="charactarSearch"
-                id="charactarSearch"
-                onChange={(e) => { setCharactar(e.target.value) }}
+                type="text"
+                aria-label="Search for character"
+                name="characterSearch"
+                id="characterSearch"
+                value={character !== null ? character : "" }
+                onChange={(e) => { setCharacter(e.target.value) }}
                 onFocus={(e) => { setInputFoucs(true) }}
               // onBlur={(e) => { setInputFoucs(false) }}
               />
@@ -176,8 +180,8 @@ function App() {
           {
             starWarsData !== null && starWarsData.length === 0 ?
               <div className="card_list_error">
-                <h1 tabindex="0">The Force has abandoned you.</h1>
-                <h1  tabindex="0">Try again</h1>
+                <h1 tabIndex="0">The Force has abandoned you.</h1>
+                <h1 tabIndex="0">Try again</h1>
               </div>
               :
               ""
@@ -221,10 +225,7 @@ function App() {
                     alt="Next page Icon"
                   />
                 </button>
-
               </div>
-
-
         }
 
 
